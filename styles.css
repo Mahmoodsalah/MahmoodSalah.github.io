@@ -52,35 +52,48 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Main Sections */
-main section {
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-    background: #fff;
+/* About Section */
+#about .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-main section h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: #333;
+#about .gallery img {
+    width: calc(20% - 10px); /* Adjusts for 5 images */
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    height: auto;
+    object-fit: cover;
 }
 
-main section ul {
-    list-style: none;
-    padding: 0;
+/* Bootcamp Section */
+#bootcamps img {
+    max-width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin: 20px 0;
 }
 
-main section ul li {
-    margin: 5px 0;
+/* Other Sections */
+.dimmed {
+    color: gray;
 }
 
-main section ul li a {
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
     text-decoration: none;
-    color: #007bff;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
-main section ul li a:hover {
-    text-decoration: underline;
+.btn:hover {
+    background: #0056b3;
 }
 
 /* Footer */
@@ -89,5 +102,4 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    margin-top: 20px;
 }
