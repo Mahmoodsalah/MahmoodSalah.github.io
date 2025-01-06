@@ -24,12 +24,55 @@
         </div>
     </header>
     <main>
-        <!-- Your sections here (About, Projects, Bootcamps, Testimonials, CV, Contact) -->
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>Mahmood Salah is an experienced AI Engineer, AI Business Transformation Consultant, and Data Scientist, with a passion for mentoring and empowering others in the AI field. He specializes in designing innovative AI solutions and driving impactful business transformations through technology.</p>
+                <div class="gallery">
+                    <img src="images/photo1.jpg" alt="Mahmood Salah">
+                    <img src="images/photo2.jpg" alt="Mahmood Salah at Work">
+                    <img src="images/photo3.jpg" alt="Speaking at an Event">
+                    <img src="images/photo4.jpg" alt="Team Collaboration">
+                    <img src="images/photo5.jpg" alt="AI Workshop">
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <div class="container">
+                <h2>Testimonials</h2>
+                <div class="testimonial">
+                    <img src="images/person1.jpg" alt="John Doe">
+                    <p><strong>John Doe</strong> - CEO, TechCorp</p>
+                    <p>"Mahmood’s expertise in AI and business transformation has been instrumental in the success of our projects."</p>
+                </div>
+                <div class="testimonial">
+                    <img src="images/person2.jpg" alt="Jane Smith">
+                    <p><strong>Jane Smith</strong> - Data Scientist, AI Innovations</p>
+                    <p>"His mentorship and technical knowledge have greatly enhanced my career in AI."</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="container">
             <p>© 2025 Mahmood Salah</p>
         </div>
     </footer>
+
+    <!-- JavaScript for Gallery Animation -->
+    <script>
+        const galleryImages = document.querySelectorAll('.gallery img');
+        let currentImage = 0;
+
+        setInterval(() => {
+            galleryImages.forEach((img, index) => {
+                img.style.opacity = index === currentImage ? '1' : '0';
+            });
+            currentImage = (currentImage + 1) % galleryImages.length;
+        }, 3000);
+    </script>
 </body>
 </html>
