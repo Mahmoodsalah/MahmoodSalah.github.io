@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: theme('colors.charcoal');
+  background-color: theme('colors.white');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  /* Headers alignment */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-charcoal;
+    @apply mb-4 mt-6;
+  }
+
+  /* Desktop header alignment */
+  @screen md {
+    h1, h2 {
+      @apply text-center;
+    }
+    
+    h3, h4, h5, h6 {
+      @apply text-left;
+    }
+  }
+
+  /* Mobile header alignment */
+  @screen sm {
+    h1, h2, h3, h4, h5, h6 {
+      @apply text-left;
+    }
+  }
+
+  /* Body text and paragraphs */
+  p {
+    @apply font-body text-muted text-left leading-relaxed;
+    @apply mb-4;
+  }
+
+  /* Lists */
+  ul, ol {
+    @apply text-left pl-6 mb-4;
+  }
+
+  li {
+    @apply mb-2;
+  }
+
+  /* Form elements */
+  label {
+    @apply block text-left mb-1;
+  }
+
+  input, textarea, select {
+    @apply w-full text-left mb-4;
+  }
+
+  /* Form buttons */
+  button[type="submit"] {
+    @apply mx-auto block;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply text-center italic my-6 px-4;
+  }
+
+  /* Image captions */
+  figcaption {
+    @apply text-left text-sm mt-2;
+  }
+}
+
+/* Navigation */
+.nav-desktop {
+  @apply hidden md:flex justify-center items-center space-x-6;
+}
+
+.nav-mobile {
+  @apply md:hidden text-left;
+}
+
+/* Footer */
+.footer-desktop {
+  @apply hidden md:block text-center;
+}
+
+.footer-mobile {
+  @apply md:hidden text-left;
+}
+
+/* Section titles */
+.section-title {
+  @apply font-display text-3xl font-bold text-charcoal md:text-4xl;
+  @apply md:text-center text-left;
+}
+
+/* Custom styles for sections */
+.hero-title {
+  @apply font-display text-mocha leading-tight;
+  @apply md:text-center text-left;
+}
+
+.testimonial-text {
+  @apply font-body italic text-muted;
+  @apply text-left;
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-md transition-all duration-200;
+}
+
+.btn-primary {
+  @apply bg-mocha text-white hover:bg-mocha-600;
+}
+
+.btn-secondary {
+  @apply bg-white text-mocha hover:bg-mocha-50 hover:text-mocha-600 border border-mocha;
+}
+
+/* Form styles */
+.form-group {
+  @apply mb-4;
+}
+
+.form-label {
+  @apply block text-left text-sm font-medium text-charcoal mb-1;
+}
+
+.form-input {
+  @apply w-full text-left rounded-md border-mocha-200 shadow-sm;
+}
+
+.form-submit {
+  @apply mx-auto block;
+}
