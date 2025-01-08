@@ -2,14 +2,20 @@ import { Keyword, AnimationConfig } from './types';
 import { AI_KEYWORDS } from './keywords';
 
 export function createKeywords(width: number, height: number, config: AnimationConfig): Keyword[] {
-  return config.keywords.map(text => ({
+  const keywords = config.keywords || [];
+  const fontSize = config.fontSize || 16;
+  const moveSpeed = config.moveSpeed || 0.3;
+  const primaryColor = config.primaryColor || '99, 102, 241';
+  const secondaryColor = config.secondaryColor || '79, 70, 229';
+
+  return keywords.map(text => ({
     x: Math.random() * width,
     y: Math.random() * height,
-    vx: (Math.random() - 0.5) * config.moveSpeed,
-    vy: (Math.random() - 0.5) * config.moveSpeed,
+    vx: (Math.random() - 0.5) * moveSpeed,
+    vy: (Math.random() - 0.5) * moveSpeed,
     text,
-    size: config.fontSize,
-    color: AI_KEYWORDS.includes(text) ? config.primaryColor : config.secondaryColor
+    size: fontSize,
+    color: AI_KEYWORDS.includes(text) ? primaryColor : secondaryColor
   }));
 }
 
@@ -26,6 +32,8 @@ export function updateKeywords(keywords: Keyword[], width: number, height: numbe
 }
 
 export function drawScene(ctx: CanvasRenderingContext2D, keywords: Keyword[], config: AnimationConfig) {
+  const connectionDistance = config.connectionDistance || 200;
+
   // Draw connections
   ctx.lineWidth = 0.5;
   keywords.forEach((k1, i) => {
@@ -34,8 +42,8 @@ export function drawScene(ctx: CanvasRenderingContext2D, keywords: Keyword[], co
       const dy = k1.y - k2.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance < config.connectionDistance) {
-        const opacity = (1 - distance / config.connectionDistance) * 0.2;
+      if (distance < connectionDistance) {
+        const opacity = (1 - distance / connectionDistance) * 0.2;
         ctx.strokeStyle = `rgba(${k1.color}, ${opacity})`;
         ctx.beginPath();
         ctx.moveTo(k1.x, k1.y);

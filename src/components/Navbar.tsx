@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { NavItems } from '../data/navItems';
+import { NavItems, NavItem } from '../data/navItems';
 import { Logo } from './Logo';
 
 export default function Navbar() {
@@ -43,7 +43,7 @@ export default function Navbar() {
     }
   };
 
-  const renderNavLink = (item: typeof NavItems[0], isMobile: boolean = false) => {
+  const renderNavLink = (item: NavItem, isMobile: boolean = false) => {
     const baseClasses = `
       cursor-pointer
       font-heading
@@ -86,17 +86,6 @@ export default function Navbar() {
         >
           {item.name}
         </ScrollLink>
-      );
-    }
-
-    if (item.href === 'bootcamps') {
-      return (
-        <button
-          onClick={() => handleNavClick('bootcamps')}
-          className={baseClasses}
-        >
-          {item.name}
-        </button>
       );
     }
 

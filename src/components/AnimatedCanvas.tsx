@@ -3,9 +3,10 @@ import { useNeuralAnimation } from './animations/useNeuralAnimation';
 
 export function AnimatedCanvas() {
   const canvasRef = useNeuralAnimation({
-    neuronCount: 50,
-    connectionDistance: 200,
-    pulseSpeed: 0.02
+    layerCount: 4,
+    neuronsPerLayer: 5,
+    pulseSpeed: 0.02,
+    color: '75, 85, 99'
   });
 
   return (

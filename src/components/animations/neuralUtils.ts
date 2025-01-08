@@ -2,14 +2,16 @@ import { Neuron, NeuralConfig } from './types';
 
 export function createNeuralLayers(width: number, height: number, config: NeuralConfig): Neuron[] {
   const neurons: Neuron[] = [];
-  const layerSpacing = width / (config.layerCount + 1);
+  const layerCount = config.layerCount || 4;
+  const neuronsPerLayer = config.neuronsPerLayer || 5;
+  const layerSpacing = width / (layerCount + 1);
   
   // Create neurons in organized layers
-  for (let layer = 0; layer < config.layerCount; layer++) {
+  for (let layer = 0; layer < layerCount; layer++) {
     const x = layerSpacing * (layer + 1);
     
-    for (let i = 0; i < config.neuronsPerLayer; i++) {
-      const spacing = height / (config.neuronsPerLayer + 1);
+    for (let i = 0; i < neuronsPerLayer; i++) {
+      const spacing = height / (neuronsPerLayer + 1);
       const y = spacing * (i + 1);
       
       neurons.push({
@@ -34,14 +36,17 @@ export function createNeuralLayers(width: number, height: number, config: Neural
 }
 
 export function updateNeuralNetwork(neurons: Neuron[], config: NeuralConfig) {
+  const pulseSpeed = config.pulseSpeed || 0.02;
   neurons.forEach(neuron => {
-    neuron.pulseOffset = (neuron.pulseOffset + config.pulseSpeed) % (Math.PI * 2);
+    neuron.pulseOffset = (neuron.pulseOffset + pulseSpeed) % (Math.PI * 2);
   });
 }
 
 export function drawNeuralNetwork(ctx: CanvasRenderingContext2D, neurons: Neuron[], config: NeuralConfig) {
+  const color = config.color || '75, 85, 99';
+  
   // Draw connections
-  ctx.strokeStyle = `rgba(${config.color}, 0.2)`;
+  ctx.strokeStyle = `rgba(${color}, 0.2)`;
   ctx.lineWidth = 1;
   
   neurons.forEach(neuron => {
@@ -59,7 +64,7 @@ export function drawNeuralNetwork(ctx: CanvasRenderingContext2D, neurons: Neuron
     const pulseScale = (Math.sin(neuron.pulseOffset) + 1) / 2;
     const size = 3 + pulseScale * 2;
     
-    ctx.fillStyle = `rgba(${config.color}, 0.8)`;
+    ctx.fillStyle = `rgba(${color}, 0.8)`;
     ctx.beginPath();
     ctx.arc(neuron.x, neuron.y, size, 0, Math.PI * 2);
     ctx.fill();
