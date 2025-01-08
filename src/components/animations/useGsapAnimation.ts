@@ -30,8 +30,8 @@ export function useGsapAnimation() {
           duration: 2,
           stagger: {
             amount: 1,
-            grid: 'random',
-            from: 'random',
+            grid: [10, 10],
+            from: 0,
           },
           repeat: -1,
           yoyo: true,
@@ -75,7 +75,7 @@ export function useGsapAnimation() {
           const x = (clientX - left) / width;
           const y = (clientY - top) / height;
 
-          gsap.to(dotsRef.current?.children, {
+          gsap.to(dotsRef.current?.children || [], {
             x: (i) => (Math.random() - 0.5) * 20 * (1 - Math.abs(x - 0.5)),
             y: (i) => (Math.random() - 0.5) * 20 * (1 - Math.abs(y - 0.5)),
             duration: 0.5,

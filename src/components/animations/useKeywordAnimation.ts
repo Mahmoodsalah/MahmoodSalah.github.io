@@ -9,7 +9,12 @@ const DEFAULT_CONFIG: AnimationConfig = {
   moveSpeed: 0.3,
   fontSize: 16,
   primaryColor: '99, 102, 241', // Indigo for AI terms
-  secondaryColor: '79, 70, 229' // Purple for business terms
+  secondaryColor: '79, 70, 229', // Purple for business terms
+  particleCount: 30,
+  particleSpeed: 0.3,
+  particleSize: 2,
+  color: '99, 102, 241',
+  pulseSpeed: 0.02
 };
 
 export function useKeywordAnimation(config: Partial<AnimationConfig> = {}) {

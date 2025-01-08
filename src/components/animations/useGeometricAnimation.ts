@@ -2,13 +2,18 @@ import { useCallback, useEffect, useRef } from 'react';
 import { Shape, AnimationConfig } from './types';
 import { createShapes, updateShapes, drawScene } from './geometricUtils';
 
-const DEFAULT_CONFIG: AnimationConfig = {
+const DEFAULT_CONFIG = {
   shapeCount: 30,
   connectionDistance: 150,
   rotationSpeed: 0.001,
   moveSpeed: 0.3,
   primaryColor: '99, 102, 241', // Indigo
-  secondaryColor: '79, 70, 229' // Purple
+  secondaryColor: '79, 70, 229', // Purple
+  particleCount: 30,
+  particleSpeed: 0.3,
+  particleSize: 2,
+  color: '99, 102, 241',
+  pulseSpeed: 0.02
 };
 
 export function useGeometricAnimation(config: Partial<AnimationConfig> = {}) {
